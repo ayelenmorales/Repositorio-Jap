@@ -85,46 +85,36 @@
       <div class="container">
         <div class="row justify-content-md-left">
           <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Nuevo comentario</h4>
-            <form class="needs-validation" id="sell-info">
+            <h4 class="mb-3">Califica este producto</h4>
+            <form action="">
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="productName">Correo</label>
-                  <input type="text" class="form-control" id="productName" placeholder="" value="" >
-                  <div class="invalid-feedback">
-                    Ingresa un nombre
-                  </div>
+                  <label for="clasificacion">Calificación</label>
+               
                 </div>
               </div>
-            </form>
-            <form>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="clasificacion">Calificación</label>
-               
-              </div>
-            </div>
             
-              <p class="clasificacion">
-                <input id="radio1"  type="radio" name="estrellas" value="5"><!--
-                --><label class="fa fa-star" for="radio1"></label><!--
-                --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                --><label class="fa fa-star"for="radio2"></label><!--
-                --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                --><label class="fa fa-star"for="radio3"></label><!--
-                --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                --><label class="fa fa-star"for="radio4"></label><!--
-                --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                --><label class="fa fa-star"for="radio5"></label>
-              </p>
+                <p class="clasificacion">
+                  <input id="radio1"  type="radio" name="estrellas" value="5"><!--
+                 --><label class="fa fa-star" for="radio1"></label><!--
+                  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                  --><label class="fa fa-star"for="radio2"></label><!--
+                  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                  --><label class="fa fa-star"for="radio3"></label><!--
+                  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                  --><label class="fa fa-star"for="radio4"></label><!--
+                  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                  --><label class="fa fa-star"for="radio5"></label>
+                </p>
+            
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="productDescription">Comentarios</label>
+                    <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+                  </div>
+                </div>
+                <a type="button" class="btn btn-light btn-block" id="sendComments" onClick="sentComment()" href="products.html">Enviar</a>  
             </form>
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                  <label for="productDescription">Comentarios</label>
-                  <textarea class="form-control" id="productDescription" rows="3"></textarea>
-              </div>
-            </div>
-            <button class="btn btn-light btn-block" id="sendComments">Enviar</button>  
           </div>
         </div>
         <br>

@@ -17,6 +17,13 @@ function showImagesGallery(array){
     }
 }
 
+
+function sentComment() {
+    alert ("Tu calificación ha sido enviada con éxito");
+}
+
+
+
 function showComments() {
 
     let dataComments = "";
@@ -67,7 +74,7 @@ function showComments() {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
-
+//Obtengo lainformación por producto.
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -98,15 +105,14 @@ document.addEventListener("DOMContentLoaded", function(e){
             let products = resultObj.data;
     
             let htmlRelProd= '';
-            product.relatedProducts.forEach(function(productIndex){
-                let tempProd = products[productIndex];
+            product.relatedProducts.forEach(function(proIndex){
+                let tempProd = products[proIndex];
                 htmlRelProd += `
                 <div class="card" style="width: 18rem;">
                     <img src="${tempProd.imgSrc}" class="card-img-top" alt="...">
-                    <div class="card body">
-                        <h5 class="car-title">${tempProd.name}<h5/>
+                    <h5 class="car-title">${tempProd.name}<h5/>
                         
-                    </div>
+                    
                 </div> `
                         
             });       
@@ -130,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             showComments();
         }
     });
+
+    
 });
 
 
