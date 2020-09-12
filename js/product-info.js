@@ -19,7 +19,8 @@ function showImagesGallery(array){
 
 
 function sentComment() {
-    alert ("Tu calificación ha sido enviada con éxito");
+    
+    alert ("Tu calificación: -" + $('#productCommentDescription').val() +  "- ha sido enviada con éxito");
 }
 
 
@@ -46,21 +47,27 @@ function showComments() {
         dataComments += `
         
     <div class="d-flex comment" id="comment">
-        
-        <i class="fas fa-caret-left fa-3x"></i>
-        <div class="col-11 comment-body">
+        <div class="card" style="width: 60rem;">
             
-            <div class="comment-header d-flex flex-wrap justify-content-between">
-            <b>` + com.user + `</b>  
-            <p>` + com.dateTime + `</p> </div>
+            <div class="col-11 comment-body">
+                
+                <div class="comment-header d-flex flex-wrap justify-content-between">
+                    
+                    <b><i class="fas fa-check-circle">` +"  "+ com.user + `</i></b>  
+                    <p>` + com.dateTime + `</p> </div>
             
-            <div class="rating-stars mb-2" id="rating` + i + `">` + star + `</div>
-            <p><i>` + com.description + `</i></p>
-            <hr width=900>
+                    <div class="rating-stars mb-2" id="rating` + i + `">` + star + `
+                    
+                    </div>
+
+                        <p><i>` + com.description + `</i></p>
+                        
             
            
+                </div>
+            </div>
         </div>
-        </div>
+    </div>
         `
 
         document.getElementById("commentProduct").innerHTML = dataComments;

@@ -79,13 +79,16 @@
 
       <h4>Comentarios</h4>
       <br>
-      <div style="border: ridge  lightgray  1px;" id="commentProduct">
+      <div id="commentProduct">
       </div>
       <br>
       <div class="container">
         <div class="row justify-content-md-left">
           <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Califica este producto</h4>
+            <h4 class="mb-3"><i id="usercal"></i>, califica este producto</h4>
+              <script>
+                document.getElementById("usercal").innerHTML=localStorage.getItem('loggedUser').split("@",1)
+              </script>
             <form action="">
               <div class="row">
                 <div class="col-md-6 mb-3">
@@ -110,10 +113,10 @@
                 <div class="row">
                   <div class="col-md-12 mb-3">
                     <label for="productDescription">Comentarios</label>
-                    <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+                    <textarea class="form-control" id="productCommentDescription" rows="3" required></textarea>
                   </div>
                 </div>
-                <a type="button" class="btn btn-light btn-block" id="sendComments" onClick="sentComment()" href="products.html">Enviar</a>  
+                <a type="button" class="btn btn-light btn-block" id="sendComments" onClick="sentComment()" href="product-info.html">Enviar</a>  
             </form>
           </div>
         </div>
