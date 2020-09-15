@@ -270,3 +270,7 @@ input[type="radio"]:checked ~ label {
 
 /* HASTA ACÁ Todos los formatos que tienen que ver con label y form */
 
+.carCont{
+  width: 450px;
+  
+} 

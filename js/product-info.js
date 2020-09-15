@@ -1,19 +1,54 @@
 function showImagesGallery(array){
 
     let htmlContentToAppend = "";
+    let htmlCarrusel ="";
+    htmlContentToAppend +=`
+    <div class="carousel-item active">
+        <img src="img/prod1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>${product.name}</h5>
+        </div>
+    </div>
+    `
+    htmlCarrusel +=` 
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div id="innercarrusel" class="carousel-inner">
+        </div> 
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>       
+    </div>
+    `
 
-    for(let i = 0; i < array.length; i++){
+   
+
+    document.getElementById("productImagesWrapper").innerHTML = htmlCarrusel;
+
+    for(let i = 1; i < array.length; i++){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+        <div class="carousel-item">
+            <img src="` + imageSrc + `" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>${product.name}</h5>
             </div>
         </div>
         `
 
-        document.getElementById("productImagesWrapper").innerHTML = htmlContentToAppend;
+        document.getElementById("innercarrusel").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -115,11 +150,16 @@ document.addEventListener("DOMContentLoaded", function(e){
             product.relatedProducts.forEach(function(proIndex){
                 let tempProd = products[proIndex];
                 htmlRelProd += `
-                <div class="card" style="width: 18rem;">
-                    <img src="${tempProd.imgSrc}" class="card-img-top" alt="...">
-                    <h5 class="car-title">${tempProd.name}<h5/>
+                <div class="card" style="width: 18rem; shadow-sm custom-card">
+                    <div class="card-body">
+                        <img src="${tempProd.imgSrc}" class="card-img-top" alt="...">
+                        <h5 class="car-title"><b>${tempProd.name}</b><h5/>
+                        <p class="card-text"> ${tempProd.description}<p/>
+                        <p class="text-center">
+                            <a href="products.html" class="btn btn-dark">Ver</a>
+                        </p>
                         
-                    
+                    </div>    
                 </div> `
                         
             });       
@@ -135,6 +175,14 @@ document.addEventListener("DOMContentLoaded", function(e){
         
     });             
     
+    //<div class="card" style="width: 18rem;">
+  //<img src="..." class="card-img-top" alt="...">
+  //<div class="card-body">
+    //<h5 class="card-title">Card title</h5>
+    //<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    //<a href="#" class="btn btn-primary">Go somewhere</a>
+  //</div>
+    //</div>
 
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {

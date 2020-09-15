@@ -40,7 +40,9 @@ var getJSONData = function(url){
     });
 }
 
- 
+function exit(){
+  localStorage.setItem('loggedUser', "Usuario");
+} 
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -49,4 +51,7 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   var usuarioLogeado = document.getElementById('userloga');
   usuarioLogeado.innerHTML = localStorage.getItem('loggedUser').split("@",1);
+  if (localStorage.getItem('loggedUser')==="Usuario" && (window.location.pathname.split("/").pop())!="index.html"){
+    return location.replace("./index.html");
+  }
 });
