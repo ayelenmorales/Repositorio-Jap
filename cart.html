@@ -7,6 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -54,6 +55,7 @@
     <!-- Tabla productos -->
     <div class="container">
       <div class="text-center p-4">
+        <p id="estid"></p>
         <h2>Mi Carrito</h2>
         <p class="lead">¡Ya casi es tuyo!</p>
       </div>
@@ -62,7 +64,7 @@
       <div class="col-md-6 order-md-2 mb-4"> 
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="lh-condensed">Tus productos</span>
-          <span class="badge badge-secondary badge-pill">2</span>
+          <span id="contArt" class="badge badge-primary badge-pill"></span>
         </h4>
           <div>
             <table class="table">
@@ -73,6 +75,8 @@
                   <th class="text-center">Precio</th>
                   <th class="text-center">Cantidad</th>
                   <th class="text-center">Subtotal</th>
+                  <th class="text-center">Eliminar</th>
+
                   
                 </tr>
               </thead>
@@ -91,174 +95,126 @@
         <div class="col-md-6 order-md-1">
             <hr class="mb-4">
             <h4 class="mb-3">Tipo de envio</h4>
+            
               <div class="d-block my-3">
-                <div class="custom-control custom-radio">
-                  <input id="premium" value="0.15" name="publicationType" type="radio" class="custom-control-input radio"  checked="" required="">
-                  <label class="custom-control-label" for="premium">Premium (2-5 días)</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="express" value="0.07" name="publicationType" type="radio" class="custom-control-input radio" required="">
-                  <label class="custom-control-label" for="express">Express (5-8 días)</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="standard" value="0.05" name="publicationType" type="radio" class="custom-control-input radio" required="">
-                  <label class="custom-control-label" for="standard">Standard (12 -15 días)</label>
-                </div>
-                <div class="row">
-                  <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver condiciones</button>
-                </div>
-              </div>
-              
-              <h4 class="mb-3">Datos de Envio</h4>
-            <div class="row">
-              <div class="col-6">
-                <div class="form-group">
-                  <label for="calle">Calle</label>
-                  <input class="form-control form-control-rounded" type="text" id="calle" required>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="form-group">
-                  <label for="numeroCalle">Numero</label>
-                  <input class="form-control form-control-rounded" type="text" id="numeroCalle" required>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label for="Esquina">Esquina</label>
-                  <input class="form-control form-control-rounded" type="text" id="esquina" required>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="country">País</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">Seleccione...</option>
-                  <option>Uruguay</option>
-                </select>
-                
-              </div>
-              <div class="col-md-5 mb-3">
-                <label for="state">Departamento</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Seleccione...</option>
-                  <option>Canelones</option>
-                </select>
-                
-              </div>
-            </div>
-            
-            
+                <form class="needs-validation" id="cart-info">
+                              <div class="custom-control custom-radio">
+                                <input id="premium" value="0.15" name="publicationType" type="radio" class="custom-control-input radios"  checked="" required="">
+                                <label class="custom-control-label" for="premium">Premium (2-5 días)</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="express" value="0.07" name="publicationType" type="radio" class="custom-control-input radios" required="">
+                                <label class="custom-control-label" for="express">Express (5-8 días)</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="standard" value="0.05" name="publicationType" type="radio" class="custom-control-input radios" required="">
+                                <label class="custom-control-label" for="standard">Standard (12 -15 días)</label>
+                              </div>
+                              <div class="row">
+                                <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver condiciones</button>
+                              </div>
+                            </div>
+                            
+                            <h4 class="mb-3">Datos de Envio</h4>
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="calle">Calle</label>
+                                <input class="form-control form-control-rounded" type="text" id="calle">
+                              </div>
+                            </div>
+                            <div class="col-4">
+                              <div class="form-group">
+                                <label for="numeroCalle">Numero</label>
+                                <input class="form-control form-control-rounded" type="text" id="numeroCalle">
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="Esquina">Esquina</label>
+                                <input class="form-control form-control-rounded" type="text" id="esquina">
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <label for="pais">País</label>
+                              <select class="custom-select d-block w-100" id="pais">
+                                <option value="">Seleccione...</option>
+                                <option>Uruguay</option>
+                              </select>
+                              
+                            </div>
+                            <div class="col-md-5 mb-3">
+                              <label for="departamento">Departamento</label>
+                              <select class="custom-select d-block w-100" id="departamento">
+                                <option value="">Seleccione...</option>
+                                <option>Canelones</option>
+                              </select>
+                              
+                            </div>
+                          </div>
+                          
+                          
 
-            <hr class="mb-4">
+                          <hr class="mb-4">
 
-            <!-- Costos-->
-                  <h4 class="mb-3">Costos</h4>
-                  <ul class="list-group mb-3">
-                      <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                          <h6 class="my-0">Subtotal</h6>
-                          <small class="text-muted">Precio artículos a comprar</small>
-                        </div>
-                        <span class="text-muted" id="productSubTotal">-</span>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                          <h6 class="my-0">Porcentaje</h6>
-                          <small class="text-muted">Según el tipo de envio</small>
-                        </div>
-                        <span class="text-muted" id="shippingCost">-</span>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between">
-                        <span>Total ($)</span>
-                        <strong id="totalCost">-</strong>
-                      </li>
-                    </ul>
+                          <!-- Costos-->
+                                <h4 class="mb-3">Costos</h4>
+                                <ul class="list-group mb-3">
+                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                      <div>
+                                        <h6 class="my-0">Subtotal</h6>
+                                        <small class="text-muted">Precio artículos a comprar</small>
+                                      </div>
+                                      <span class="text-muted" id="productSubTotal1">-</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                      <div>
+                                        <h6 class="my-0">Porcentaje</h6>
+                                        <small class="text-muted">Según el tipo de envio</small>
+                                      </div>
+                                      <span class="text-muted" id="shippingCost">-</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                      <span>Total ($)</span>
+                                      <strong id="totalCost">-</strong>
+                                    </li>
+                                  </ul>
 
-                    <hr class="mb-4">
-                <!-- Medio de pago-->
-        
-              <h4 class="mb-3">Medio de pago</h4>
-                
-                  <div class="d-block my-3">
-                    <div class="custom-control custom-radio">
-                      <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"  required>
-                      <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+                                  <hr class="mb-4">
+                              <!-- Medio de pago-->
+                      
+                            <h4 class="mb-3">Medio de pago</h4>
+                            <p id="medioPagoselec"></p>
+                                <!-- Button trigger modal Medio pago-->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                                  Seleccione
+                                </button>
+                                
+                              
+                              
+                          <hr class="mb-4">
+                      </div>     
+                    </div> 
+                    <div class="d-flex justify-content-md-center"> 
+                      <button class="btn btn-primary btn-lg" type="submit">Finalizar compra</button>   
                     </div>
-                    <div class="custom-control custom-radio">
-                      <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                      <label class="custom-control-label" for="debit">Transferecia Bancaria</label>
-                    </div>
-                  </div>
-                
-                <!--BORRAR este div si devuelvo el comentario-->  
-                  <!-- div class="col-md-6 mb-3">
-                    <label for="firstName">Nombre</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Como figure en su medio de pago" value="" required>
-                    <div class="invalid-feedback">
-                    Nombre inválido.
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="lastName">Apellido</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Como figure en su medio de pago" value="" required>
-                    <div class="invalid-feedback">
-                      Nombre inválido.
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="cc-name">Tarjeta</label>
-                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Se requiere tarjeta
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="cc-number">Número Tarjeta de Crédito</label>
-                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                    <div class="invalid-feedback">
-                      número inválido
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3 mb-3">
-                    <label for="cc-expiration">Fecha de expiración</label>
-                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Inválido
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="cc-cvv">CVS</label>
-                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                    <div class="invalid-feedback">
-                      iNVÁLIDO
-                    </div>
-                  </div>
-                </div> -->
-            <hr class="mb-4">
-        </div>     
-      </div> 
-      <div class="d-flex justify-content-md-center"> 
-        <button class="btn btn-primary btn-lg" type="submit">Finalizar compra</button>   
-      </div>
-  </div>
+                </form>
+    </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
   
     </footer>
+    
     <!--Condiciones que se despliegan-->
-    <div class="alert fade" role="alert" id="alertResult">
-      <span id="resultSpan"></span>
+    <div class="alert fade" role="alert" id="alertResult1">
+      <span id="resultSpan1"></span>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </button>
     </div>
-
+     <!--Modal Condiciones que se despliegan-->
   <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Condiciones de publicación</h5>
@@ -287,6 +243,143 @@
      </div>
    </div>
   </div> 
+  
+
+  <!-- Modal medio de pago-->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Seleccione un medio de pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-block my-3">
+            <div>
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Tarjeta de crédito
+              </button>
+              <div class="collapse" id="collapseExample"><!--Formulario de la tarjeta-->
+                <div class="card card-body">
+                  <form id="formTarj">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <label for="name">Nombre del titular</label>
+                            <input class="form-control" id="name" type="text" placeholder="Enter your name" required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <label for="ccnumber">Número de tarjeta</label>
+                            <div class="input-group">
+                              <input class="form-control" type="text" placeholder="0000 0000 0000 0000" autocomplete="email" required>
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <span class="iconify" data-icon="mdi:credit-card" data-inline="false"></span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-4">
+                          <label for="ccmonth">Mes</label>
+                          <select class="form-control" id="ccmonth" required>
+                            <option value="">Seleccione...</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="ccyear">Año</label>
+                          <select class="form-control" id="ccyear" required>
+                            <option value="">Seleccione...</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-group">
+                            <label for="cvv">CVV/CVC</label>
+                            <input class="form-control" id="cvv" type="text" placeholder="123" required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  
+                    <button id= "cardSubBotton" class="btn btn-primary btn-lg btn-block" type="button" data-dismiss="modal" onclick="cardChecked()">Continuar</button>
+                  </form><!--Fin de formulario de tarjeta-->
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+              Transferecia Bancaria
+            </button>
+          
+            <div class="collapse" id="collapseExample2"><!--Formulario cuenta bancaria-->
+              <div class="card card-body">
+                <form id=formBank>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="cc-name">Nombre del titular</label>
+                      <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                      <!--<small class="text-muted">Como se encuentra en la tarjeta</small>-->
+                      <div class="invalid-feedback">
+                        Name on card is required
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label for="cc-number">Banco</label>
+                      <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                      <div class="invalid-feedback">
+                        Credit card number is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="cc-expiration">Número de cuenta</label>
+                      <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                      <div class="invalid-feedback">
+                        Expiration date required
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="mb-4">
+                  <button class="btn btn-primary btn-lg btn-block" type="button" data-dismiss="modal" onclick="bankChecked();" >Continuar</button>
+                </form>
+              </div>
+            </div>
+              
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
