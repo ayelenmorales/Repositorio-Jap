@@ -45,6 +45,14 @@ function exit(){
   localStorage.setItem('loggedUser', "Usuario");
 } 
 
+function implication(A, B) {
+  if (A) {
+    return B;
+  } else {
+    /* if A is false, the implication is true */
+    return true;
+  }
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -52,7 +60,11 @@ function exit(){
 document.addEventListener("DOMContentLoaded", function(e){
   var usuarioLogeado = document.getElementById('userloga');
   usuarioLogeado.innerHTML = localStorage.getItem('loggedUser').split("@",1);
-  if (localStorage.getItem('loggedUser')==="Usuario" && (window.location.pathname.split("/").pop())!="index.html"){
+  if (localStorage.getItem('loggedUser')==="Usuario" && !(implication(((window.location.pathname.split("/").pop())!="index.html"),((window.location.pathname.split("/").pop())=="registro.html")))){
     return location.replace("./index.html");
   }
+
+
+  
+    
 });
